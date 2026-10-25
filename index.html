@@ -192,7 +192,7 @@
     .timeline-item h3 { font-size: clamp(1.3rem, 2.5vw, 1.6rem); margin-bottom: 0.25rem; color: var(--maroon); }
     .timeline-date { font-size: clamp(0.7rem, 1.5vw, 0.85rem); text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 0.5rem; display: block; }
 
-    /* Dress Code */
+    /* Dress Code / Palette Section */
     .dress-code h2 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: 0.5rem; color: var(--maroon); }
     
     .cheesy-quote {
@@ -205,12 +205,44 @@
       margin: 1.5rem 0;
     }
 
-    .palette-container { display: flex; justify-content: center; gap: clamp(1rem, 2vw, 1.5rem); margin: 2rem 0; flex-wrap: wrap; }
-    .color-swatch {
-      width: clamp(50px, 8vw, 70px); height: clamp(50px, 8vw, 70px); border-radius: 50%;
-      border: 3px solid #ffffff; box-shadow: 0 5px 15px rgba(106, 24, 41, 0.15); cursor: pointer; transition: transform 0.3s ease;
+    .palette-container { 
+      display: flex; 
+      justify-content: center; 
+      gap: clamp(1.2rem, 3vw, 2rem); 
+      margin: 2.5rem 0; 
+      flex-wrap: wrap; 
     }
-    .color-swatch:hover { transform: scale(1.15) translateY(-5px); }
+
+    .color-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Organic Watercolor Blob Shape */
+    .color-swatch {
+      width: clamp(55px, 9vw, 75px); 
+      height: clamp(55px, 9vw, 75px); 
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      border: 3px solid #ffffff; 
+      box-shadow: 0 8px 20px rgba(106, 24, 41, 0.12); 
+      cursor: pointer; 
+      transition: transform 0.4s ease, border-radius 0.4s ease;
+    }
+    .color-swatch:hover { 
+      transform: scale(1.12) translateY(-5px) rotate(5deg); 
+      border-radius: 40% 60% 70% 30% / 50% 60% 40% 50%;
+    }
+
+    .color-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
     .swatch-sage { background-color: #C8D6AF; }
     .swatch-rose { background-color: #DDA7A5; }
     .swatch-beige { background-color: #EADBC8; }
@@ -437,7 +469,6 @@
     <!-- Dress Code Section -->
     <section class="card dress-code fade-in">
       <div class="script-text" style="margin-bottom: 0.5rem;">Dress Up &amp; Celebrate</div>
-      <h2>Dress Code</h2>
 
       <div class="cheesy-quote">
         "Pastel hues for our 'I do's. ✨"
@@ -447,13 +478,28 @@
         Come dressed in the pastel shades that you could come in... Choose the colour from the colour palette that best suits you.
       </p>
 
-      <!-- Clickable Pastel Color Swatches -->
+      <!-- Organic Watercolor Paint Blob Palette -->
       <div class="palette-container">
-        <div class="color-swatch swatch-sage" title="Pastel Sage"></div>
-        <div class="color-swatch swatch-rose" title="Dusty Rose"></div>
-        <div class="color-swatch swatch-beige" title="Warm Beige"></div>
-        <div class="color-swatch swatch-lavender" title="Soft Lavender"></div>
-        <div class="color-swatch swatch-sky" title="Sky Blue"></div>
+        <div class="color-card">
+          <div class="color-swatch swatch-sage"></div>
+          <span class="color-label">Sage</span>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch swatch-rose"></div>
+          <span class="color-label">Dusty Rose</span>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch swatch-beige"></div>
+          <span class="color-label">Warm Beige</span>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch swatch-lavender"></div>
+          <span class="color-label">Lavender</span>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch swatch-sky"></div>
+          <span class="color-label">Sky Blue</span>
+        </div>
       </div>
 
       <p class="intro-text" style="color: var(--text-muted);">
@@ -493,7 +539,6 @@
       const scale = Math.random() * 0.6 + 0.7;
       inner.style.transform = `rotate(${rot}deg) scale(${scale})`;
 
-      // Randomly choose between a falling flower (flourish_1, 2, or 3) or a petal
       const isFlower = Math.random() > 0.4; // ~60% flowers, 40% petals
       
       if (isFlower) {
@@ -501,7 +546,7 @@
         inner.style.backgroundImage = `url('images/flourish_${flowerNum}.png')`;
         inner.style.backgroundSize = 'contain';
         inner.style.backgroundRepeat = 'no-repeat';
-        const size = Math.random() * 15 + 20; // 20px to 35px size
+        const size = Math.random() * 15 + 20;
         wrapper.style.width = `${size}px`;
         wrapper.style.height = `${size}px`;
         inner.style.opacity = '0.85';
