@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Wedding of Nivedya &amp; Adithya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F6F1ED;
+      --card-bg: #FFFFFF;
+      --maroon: #6A1829;
+      --sand: #EADBC8;
+      --accent-yellow: #F3E6AC;
+      --text-main: #2D141A;
+      --text-muted: #6B5256;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.7;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Fixed Navigation Header */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 65px;
+      background-color: var(--maroon);
+      color: var(--accent-yellow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 clamp(1rem, 5vw, 3rem);
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      letter-spacing: 0.2em;
+      font-weight: 600;
+    }
+    .nav-menu { font-size: 1.8rem; cursor: pointer; }
+
+    /* Hero Section */
+    .hero-section {
+      height: 100vh; width: 100vw;
+      margin-top: 65px;
+      position: relative;
+      background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .hero-section::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to bottom, rgba(45, 20, 26, 0.4), rgba(45, 20, 26, 0.8));
+    }
+    .hero-content {
+      position: relative; z-index: 2; color: var(--accent-yellow); width: 100%; padding: 0 1rem;
+    }
+    .hero-sup {
+      font-family: 'Montserrat', sans-serif; font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+      letter-spacing: 0.35em; text-transform: uppercase; margin: 1.5rem 0; opacity: 0.9;
+    }
+    .hero-title {
+      font-family: 'Great Vibes', cursive; font-size: clamp(4rem, 12vw, 8rem);
+      line-height: 1.1; color: var(--accent-yellow); font-weight: 400;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.3); margin: 0;
+    }
+    .hero-line {
+      width: 80%; max-width: 400px; height: 1px; background: rgba(243, 230, 172, 0.3); margin: 2rem auto;
+    }
+    .hero-date-block { display: flex; flex-direction: column; gap: 0.5rem; }
+    .hero-date-block span {
+      font-family: 'Cormorant Garamond', serif; letter-spacing: 0.15em;
+      color: var(--accent-yellow); text-transform: uppercase;
+    }
+    .hero-event { font-size: clamp(0.7rem, 1.5vw, 0.9rem); opacity: 0.8; }
+    .hero-date, .hero-loc { font-size: clamp(0.9rem, 2vw, 1.2rem); }
+
+    /* Fluid Screen-Filling Container */
+    .container {
+      width: 95%;
+      max-width: 1800px;
+      margin: 0 auto; 
+      padding: clamp(3rem, 5vw, 6rem) 0;
+      position: relative; 
+      z-index: 1; 
+      display: flex; 
+      flex-direction: column; 
+      gap: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    /* Falling Petals Animation */
+    .petal {
+      position: fixed; top: -10%; border-radius: 0px 50% 50% 50%; pointer-events: none;
+      z-index: 999; animation: fall linear forwards; opacity: 0.7;
+    }
+    @keyframes fall {
+      0% { top: -10%; transform: translateX(0) rotate(0deg); }
+      100% { top: 110%; transform: translateX(100px) rotate(720deg); }
+    }
+
+    /* Absolute Floral Overlays */
+    .floral {
+      position: absolute; z-index: 10; pointer-events: none; opacity: 0.95;
+    }
+    .floral-tr {
+      top: -15px; right: -25px;
+      width: clamp(160px, 32vw, 380px);
+    }
+    .floral-bl {
+      bottom: -15px; left: -25px;
+      width: clamp(130px, 26vw, 320px);
+    }
+
+    /* Fluid Typography */
+    .script-text { font-family: 'Great Vibes', cursive; color: var(--maroon); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; line-height: 1.2; }
+    .ornament { color: var(--maroon); font-size: 1.5rem; letter-spacing: 0.35em; margin-bottom: 0.75rem; }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; letter-spacing: 0.05em; }
+    h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); line-height: 1.2; margin-bottom: 0.5rem; }
+    .sub-tagline { font-size: clamp(0.75rem, 2vw, 0.9rem); text-transform: uppercase; letter-spacing: 0.25em; font-weight: 500; margin-bottom: 1.5rem; }
+    .intro-text { font-size: clamp(0.95rem, 2vw, 1.1rem); margin-bottom: 1.25rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .parents-text { font-size: clamp(0.8rem, 1.5vw, 1rem); line-height: 1.5; margin-bottom: 1.5rem; color: #F0E6E8; }
+
+    /* Fluid Card Layout */
+    .card {
+      background: var(--card-bg); 
+      border-radius: 16px;
+      padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 6vw, 6rem); 
+      box-shadow: 0 15px 40px rgba(106, 24, 41, 0.05); 
+      position: relative; 
+      overflow: hidden; 
+      width: 100%; 
+    }
+    .arch-card {
+      background-color: var(--maroon); 
+      color: #ffffff;
+      border-top-left-radius: 16px; 
+      border-top-right-radius: clamp(80px, 15vw, 160px);
+      border-bottom-left-radius: 16px; 
+      border-bottom-right-radius: 16px;
+    }
+    .arch-card h1, .arch-card h2, .arch-card h3 { color: #ffffff; }
+    .arch-card .script-text { color: var(--accent-yellow); }
+    .arch-card .sub-tagline { color: var(--sand); }
+    .arch-card .intro-text { color: #F0E6E8; }
+    .ampersand { font-family: 'Great Vibes', cursive; font-size: clamp(2rem, 4vw, 3rem); color: var(--accent-yellow); margin: 0.5rem 0; }
+
+    /* Countdown Styling */
+    .countdown-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5rem; color: var(--maroon); }
+    .countdown-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(0.5rem, 2vw, 1.5rem);
+      margin-top: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;
+    }
+    .countdown-box { background-color: var(--sand); border-radius: 8px; padding: clamp(1rem, 3vw, 2rem) 0.5rem; }
+    .countdown-number { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; line-height: 1; color: var(--maroon); }
+    .countdown-label { font-size: clamp(0.6rem, 1.5vw, 0.8rem); text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-main); margin-top: 0.5rem; }
+
+    /* Details List */
+    .details-list {
+      display: flex; flex-direction: column; gap: 1.25rem; margin: 2.5rem auto; text-align: left;
+      border-top: 1px solid var(--sand); border-bottom: 1px solid var(--sand); padding: 2rem 1rem; max-width: 600px;
+    }
+    .detail-item { display: flex; align-items: center; gap: 1.25rem; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-muted); }
+    .detail-item strong { color: var(--maroon); }
+    .detail-icon { font-size: 1.5rem; color: var(--maroon); }
+    .btn-primary {
+      display: inline-block; text-decoration: none; background-color: var(--maroon); color: #ffffff;
+      padding: 1rem 2.5rem; border-radius: 50px; font-size: clamp(0.85rem, 1.5vw, 1rem);
+      letter-spacing: 0.2em; text-transform: uppercase; transition: all 0.3s ease; margin-top: 1rem; border: 1px solid var(--maroon);
+    }
+    .btn-primary:hover { background-color: transparent; color: var(--maroon); }
+
+    /* Timeline / Our Story */
+    .timeline { margin: 2.5rem auto; position: relative; text-align: left; max-width: 600px; }
+    .timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--sand); }
+    .timeline-item { position: relative; padding-left: 50px; margin-bottom: 2rem; }
+    .timeline-item::before { content: '❖'; position: absolute; left: 11px; top: 0; color: var(--maroon); background: var(--card-bg); font-size: 1.2rem; line-height: 1; }
+    .timeline-item h3 { font-size: clamp(1.3rem, 2.5vw, 1.6rem); margin-bottom: 0.25rem; color: var(--maroon); }
+    .timeline-date { font-size: clamp(0.7rem, 1.5vw, 0.85rem); text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 0.5rem; display: block; }
+
+    /* Dress Code */
+    .dress-code h2 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: 0.5rem; color: var(--maroon); }
+    
+    .cheesy-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      color: #CAA357; 
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin: 1.5rem 0;
+    }
+
+    .palette-container { display: flex; justify-content: center; gap: clamp(1rem, 2vw, 1.5rem); margin: 2rem 0; flex-wrap: wrap; }
+    .color-swatch {
+      width: clamp(50px, 8vw, 70px); height: clamp(50px, 8vw, 70px); border-radius: 50%;
+      border: 3px solid #ffffff; box-shadow: 0 5px 15px rgba(106, 24, 41, 0.15); cursor: pointer; transition: transform 0.3s ease;
+    }
+    .color-swatch:hover { transform: scale(1.15) translateY(-5px); }
+    .swatch-sage { background-color: #C8D6AF; }
+    .swatch-rose { background-color: #DDA7A5; }
+    .swatch-beige { background-color: #EADBC8; }
+    .swatch-lavender { background-color: #D3CCE3; }
+    .swatch-sky { background-color: #C1D3E0; }
+
+    /* Floral Divider Graphic with Overlap */
+    .floral-divider {
+      background-image: url('images/divider-floral.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: clamp(100px, 18vw, 220px);
+      width: 100%;
+      max-width: 1050px;
+      /* Negative margins pull sections closer and allow flowers to spill over */
+      margin: -4rem auto -4rem auto; 
+      position: relative;
+      z-index: 20;
+    }
+
+    /* Utilities */
+    .fade-in { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Music Player */
+    .music-btn {
+      position: fixed; bottom: 20px; right: 20px; background: var(--accent-yellow); border: 1px solid var(--accent-yellow);
+      color: var(--maroon); width: clamp(50px, 8vw, 60px); height: clamp(50px, 8vw, 60px); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: clamp(1.2rem, 3vw, 1.5rem);
+      cursor: pointer; box-shadow: 0 4px 15px rgba(106, 24, 41, 0.2); z-index: 1000; transition: all 0.3s ease;
+    }
+    .music-btn:hover { background: var(--maroon); color: var(--accent-yellow); transform: scale(1.1); }
+    .spinning { animation: spin 4s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    /* Full-Width Footer */
+    .site-footer {
+      background-color: var(--maroon);
+      color: var(--accent-yellow);
+      width: 100%;
+      padding: 4rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+    .footer-names {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .footer-loc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 2rem;
+    }
+    .footer-credit {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <nav class="navbar">
+    <div class="nav-logo">❖ N &amp; A ❖</div>
+    <div class="nav-menu">☰</div>
+  </nav>
+
+  <!-- Hero / Welcome Section -->
+  <section class="hero-section fade-in">
+    <div class="hero-content">
+      <div class="hero-sup">The Royal Celebration Of</div>
+      <h1 class="hero-title">Nivedya &amp;<br>Adithya</h1>
+      <div class="hero-sup">Request The Honor Of Your Presence</div>
+      
+      <div class="hero-line"></div>
+      
+      <div class="hero-date-block">
+        <span class="hero-event">. Marriage .</span>
+        <span class="hero-date">December 31, 2026</span>
+        <span class="hero-loc">Wasava Cliff House</span>
+      </div>
+
+      <div class="hero-line"></div>
+
+      <div class="hero-date-block">
+        <span class="hero-event">. Reception .</span>
+        <span class="hero-date">January 2, 2027</span>
+        <span class="hero-loc">Kannur, Kerala</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audio Element -->
+  <audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Floating Music Controller -->
+  <button class="music-btn" id="musicToggle" title="Play Music">🎵</button>
+
+  <!-- Main Content Container -->
+  <div class="container">
+    
+    <!-- Floral Corner Images -->
+    <img src="images/top-right-floral.png" class="floral floral-tr" alt="Watercolor Flower Top Right Overlay">
+    <img src="images/bottom-left-floral.png" class="floral floral-bl" alt="Watercolor Flower Bottom Left Overlay">
+
+    <!-- Formal Invitation Card -->
+    <header class="card arch-card fade-in">
+      <p class="sub-tagline" style="margin-top: 1rem;">You Are Invited</p>
+      
+      <div class="parents-text">
+        Mr. Susheed &amp; Mrs. Julee Susheed<br>
+        'NIVEDYAM'<br>
+        Holy Mount Road, Mathukoth P.O., Varam
+      </div>
+
+      <p class="intro-text">
+        We cordially invite you and your family to grace the auspicious occasion of our daughter's wedding with your presence and blessings.
+      </p>
+
+      <h1 style="margin-top: 2rem;">Nivedya Susheed</h1>
+      <div class="parents-text" style="font-size: clamp(0.65rem, 1.2vw, 0.85rem);">
+        (GD/o. Late Shri. Amban Raghavan &amp; Smt Kamalakshi<br>
+        Late Shri Janardhanan K &amp; Smt. Valsala V K)
+      </div>
+
+      <div class="ampersand">&amp;</div>
+
+      <h1>Adithya Dinesh</h1>
+      <div class="parents-text" style="font-size: clamp(0.65rem, 1.2vw, 0.85rem);">
+        S/o. Mr Dinesh &amp; Mrs. Jyothi Dinesh<br>
+        Ragam, Kanayi, Ezhome P.O., Ezhome
+      </div>
+
+      <div class="script-text" style="margin-top: 2rem;">Nivu &amp; Aadi</div>
+    </header>
+
+    <!-- Countdown & Details Section -->
+    <section class="card fade-in">
+      <div class="script-text" style="color: var(--accent-yellow); font-size: clamp(4rem, 8vw, 6rem); position: absolute; top: -10px; right: 10px; opacity: 0.4;">NA</div>
+      <h2 class="countdown-title">A New Chapter Begins</h2>
+
+      <div class="countdown-grid">
+        <div class="countdown-box">
+          <div class="countdown-number" id="days">00</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-number" id="hours">00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-number" id="minutes">00</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-number" id="seconds">00</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+
+      <div class="details-list">
+        <div class="detail-item">
+          <span class="detail-icon">📅</span>
+          <div><strong>Date:</strong> Thursday, 31 December 2026</div>
+        </div>
+        <div class="detail-item">
+          <span class="detail-icon">🕰️</span>
+          <div><strong>Muhurtham:</strong> 11.30 am to 12.10 pm</div>
+        </div>
+        <div class="detail-item">
+          <span class="detail-icon">📍</span>
+          <div><strong>Venue:</strong> WASAVA CLIFF HOUSE</div>
+        </div>
+      </div>
+
+      <a href="https://maps.google.com" target="_blank" class="btn-primary">Get Directions</a>
+      
+      <div style="margin-top: 2.5rem; font-family: 'Great Vibes', cursive; font-size: clamp(1.4rem, 3vw, 2rem); color: var(--maroon);">
+        "Your presence and blessings are our greatest gift"
+      </div>
+    </section>
+
+    <!-- Overlapping Floral Divider Graphic -->
+    <div class="floral-divider"></div>
+
+    <!-- Our Journey Section -->
+    <section class="card fade-in">
+      <div class="ornament">❖</div>
+      <h2>Our Journey</h2>
+      <p class="sub-tagline" style="color: var(--maroon);">Chapters of Our Story</p>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-date">August 2024</span>
+          <h3>Chapter One — The First Meeting</h3>
+          <p class="intro-text" style="color: var(--text-muted); text-align: left; margin-left: 0;">It all started with a simple hello. Little did we know it was the beginning of forever.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date">December 2025</span>
+          <h3>Chapter Two — The Proposal</h3>
+          <p class="intro-text" style="color: var(--text-muted); text-align: left; margin-left: 0;">Surrounded by love and our closest family, we decided to take the next beautiful step.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date">December 31, 2026</span>
+          <h3>Chapter Three — Forever</h3>
+          <p class="intro-text" style="color: var(--text-muted); text-align: left; margin-left: 0;">We are ready to write our favorite chapter yet—with all of you by our side.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dress Code Section -->
+    <section class="card dress-code fade-in">
+      <div class="script-text" style="margin-bottom: 0.5rem;">Dress Up &amp; Celebrate</div>
+      <h2>Dress Code</h2>
+
+      <div class="cheesy-quote">
+        "Pastel hues for our 'I do's. ✨"
+      </div>
+
+      <p class="intro-text" style="color: var(--text-muted); margin-top: 1rem;">
+        Come dressed in the pastel shades that you could come in... Choose the colour from the colour palette that best suits you.
+      </p>
+
+      <!-- Clickable Pastel Color Swatches -->
+      <div class="palette-container">
+        <div class="color-swatch swatch-sage" title="Pastel Sage"></div>
+        <div class="color-swatch swatch-rose" title="Dusty Rose"></div>
+        <div class="color-swatch swatch-beige" title="Warm Beige"></div>
+        <div class="color-swatch swatch-lavender" title="Soft Lavender"></div>
+        <div class="color-swatch swatch-sky" title="Sky Blue"></div>
+      </div>
+
+      <p class="intro-text" style="color: var(--text-muted);">
+        Traditional elegance, happy hearts, and memories to cherish forever.
+      </p>
+    </section>
+
+  </div> <!-- End Container -->
+
+  <!-- Full Width Footer Section -->
+  <footer class="site-footer">
+    <div class="footer-names">❖ NIVEDYA &amp; ADITHYA ❖ 2026</div>
+    <div class="footer-loc">KANNUR &amp; KASARAGOD, KERALA</div>
+    <div class="footer-credit">Crafted by Nivu &amp; Aadi</div>
+  </footer>
+
+  <script>
+    function createPetal() {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      const size = Math.random() * 12 + 8;
+      const colors = ['#6A1829', '#DDA7A5', '#F3E6AC'];
+      petal.style.width = `${size}px`;
+      petal.style.height = `${size}px`;
+      petal.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      petal.style.left = `${Math.random() * 100}vw`;
+      const duration = Math.random() * 7 + 8;
+      const delay = Math.random() * 3;
+      petal.style.animationDuration = `${duration}s`;
+      petal.style.animationDelay = `${delay}s`;
+      document.body.appendChild(petal);
+      setTimeout(() => { petal.remove(); }, (duration + delay) * 1000);
+    }
+    for(let i = 0; i < 15; i++) { createPetal(); }
+    setInterval(createPetal, 1500);
+
+    const weddingDate = new Date("2026-12-31T00:00:00").getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+      if (distance < 0) {
+        document.getElementById("days").innerText = "00";
+        document.getElementById("hours").innerText = "00";
+        document.getElementById("minutes").innerText = "00";
+        document.getElementById("seconds").innerText = "00";
+        return;
+      }
+      document.getElementById("days").innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+      document.getElementById("hours").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+      document.getElementById("minutes").innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+      document.getElementById("seconds").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach((element) => { observer.observe(element); });
+
+    const audio = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicToggle");
+    let isPlaying = false;
+    musicBtn.addEventListener("click", () => {
+      if (isPlaying) {
+        audio.pause();
+        musicBtn.classList.remove("spinning");
+        musicBtn.innerText = "🎵";
+      } else {
+        audio.play();
+        musicBtn.classList.add("spinning");
+        musicBtn.innerText = "🎶";
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+</body>
+</html>
