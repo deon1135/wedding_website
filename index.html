@@ -220,7 +220,6 @@
       gap: 0.6rem;
     }
 
-    /* Organic Watercolor Blob Shape */
     .color-swatch {
       width: clamp(55px, 9vw, 75px); 
       height: clamp(55px, 9vw, 75px); 
@@ -346,9 +345,9 @@
     </div>
   </section>
 
-  <!-- Audio Element -->
+  <!-- Audio Element (Path set to audio/song.mp3) -->
   <audio id="bgMusic" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    <source src="audio/song.mp3" type="audio/mpeg">
   </audio>
 
   <!-- Floating Music Controller -->
@@ -539,7 +538,7 @@
       const scale = Math.random() * 0.6 + 0.7;
       inner.style.transform = `rotate(${rot}deg) scale(${scale})`;
 
-      const isFlower = Math.random() > 0.4; // ~60% flowers, 40% petals
+      const isFlower = Math.random() > 0.4;
       
       if (isFlower) {
         const flowerNum = Math.floor(Math.random() * 3) + 1;
@@ -594,6 +593,7 @@
     const audio = document.getElementById("bgMusic");
     const musicBtn = document.getElementById("musicToggle");
     let isPlaying = false;
+
     musicBtn.addEventListener("click", () => {
       if (isPlaying) {
         audio.pause();
@@ -606,6 +606,25 @@
       }
       isPlaying = !isPlaying;
     });
+
+    // Auto-play audio on first user interaction (click, tap, or scroll)
+    function triggerAutoplay() {
+      audio.play().then(() => {
+        isPlaying = true;
+        musicBtn.classList.add("spinning");
+        musicBtn.innerText = "🎶";
+        // Remove listeners once successfully played
+        window.removeEventListener("click", triggerAutoplay);
+        window.removeEventListener("scroll", triggerAutoplay);
+        window.removeEventListener("touchstart", triggerAutoplay);
+      }).catch(error => {
+        console.log("Autoplay waiting for interaction");
+      });
+    }
+
+    window.addEventListener("click", triggerAutoplay);
+    window.addEventListener("scroll", triggerAutoplay);
+    window.addEventListener("touchstart", triggerAutoplay);
   </script>
 </body>
 </html>
