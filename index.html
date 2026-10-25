@@ -107,14 +107,10 @@
       gap: clamp(1.5rem, 4vw, 3rem);
     }
 
-    /* Falling Petals Animation */
-    .petal {
-      position: fixed; top: -10%; border-radius: 0px 50% 50% 50%; pointer-events: none;
-      z-index: 999; animation: fall linear forwards; opacity: 0.7;
-    }
+    /* Falling Motion Keyframes */
     @keyframes fall {
       0% { top: -10%; transform: translateX(0) rotate(0deg); }
-      100% { top: 110%; transform: translateX(100px) rotate(720deg); }
+      100% { top: 110%; transform: translateX(100px) rotate(360deg); }
     }
 
     /* Absolute Floral Overlays */
@@ -230,7 +226,6 @@
       height: clamp(100px, 18vw, 220px);
       width: 100%;
       max-width: 1050px;
-      /* Negative margins pull sections closer and allow flowers to spill over */
       margin: -4rem auto -4rem auto; 
       position: relative;
       z-index: 20;
@@ -476,24 +471,56 @@
   </footer>
 
   <script>
-    function createPetal() {
-      const petal = document.createElement('div');
-      petal.classList.add('petal');
-      const size = Math.random() * 12 + 8;
-      const colors = ['#6A1829', '#DDA7A5', '#F3E6AC'];
-      petal.style.width = `${size}px`;
-      petal.style.height = `${size}px`;
-      petal.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      petal.style.left = `${Math.random() * 100}vw`;
+    function createFallingItem() {
+      const wrapper = document.createElement('div');
+      wrapper.style.position = 'fixed';
+      wrapper.style.top = '-10%';
+      wrapper.style.pointerEvents = 'none';
+      wrapper.style.zIndex = '9999';
+      wrapper.style.animation = 'fall linear forwards';
+      
       const duration = Math.random() * 7 + 8;
       const delay = Math.random() * 3;
-      petal.style.animationDuration = `${duration}s`;
-      petal.style.animationDelay = `${delay}s`;
-      document.body.appendChild(petal);
-      setTimeout(() => { petal.remove(); }, (duration + delay) * 1000);
+      wrapper.style.animationDuration = `${duration}s`;
+      wrapper.style.animationDelay = `${delay}s`;
+      wrapper.style.left = `${Math.random() * 100}vw`;
+
+      const inner = document.createElement('div');
+      inner.style.width = '100%';
+      inner.style.height = '100%';
+      
+      const rot = Math.random() * 360;
+      const scale = Math.random() * 0.6 + 0.7;
+      inner.style.transform = `rotate(${rot}deg) scale(${scale})`;
+
+      // Randomly choose between a falling flower (flourish_1, 2, or 3) or a petal
+      const isFlower = Math.random() > 0.4; // ~60% flowers, 40% petals
+      
+      if (isFlower) {
+        const flowerNum = Math.floor(Math.random() * 3) + 1;
+        inner.style.backgroundImage = `url('images/flourish_${flowerNum}.png')`;
+        inner.style.backgroundSize = 'contain';
+        inner.style.backgroundRepeat = 'no-repeat';
+        const size = Math.random() * 15 + 20; // 20px to 35px size
+        wrapper.style.width = `${size}px`;
+        wrapper.style.height = `${size}px`;
+        inner.style.opacity = '0.85';
+      } else {
+        const size = Math.random() * 12 + 8;
+        wrapper.style.width = `${size}px`;
+        wrapper.style.height = `${size}px`;
+        inner.style.backgroundColor = ['#6A1829', '#DDA7A5', '#F3E6AC'][Math.floor(Math.random() * 3)];
+        inner.style.borderRadius = '0px 50% 50% 50%';
+        inner.style.opacity = '0.7';
+      }
+
+      wrapper.appendChild(inner);
+      document.body.appendChild(wrapper);
+      setTimeout(() => { wrapper.remove(); }, (duration + delay) * 1000);
     }
-    for(let i = 0; i < 15; i++) { createPetal(); }
-    setInterval(createPetal, 1500);
+
+    for(let i = 0; i < 18; i++) { createFallingItem(); }
+    setInterval(createFallingItem, 1200);
 
     const weddingDate = new Date("2026-12-31T00:00:00").getTime();
     function updateCountdown() {
