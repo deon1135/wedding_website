@@ -76,7 +76,26 @@
     .nav-decor-right {
       transform: scaleX(-1); /* Flips the right image for perfect symmetry */
     }
-    .nav-menu { font-size: 1.8rem; cursor: pointer; }
+    
+    /* RSVP Button in Header */
+    .nav-rsvp-btn {
+      display: inline-block;
+      text-decoration: none;
+      background-color: var(--accent-yellow);
+      color: var(--maroon);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      border: 1px solid var(--accent-yellow);
+    }
+    .nav-rsvp-btn:hover {
+      background-color: transparent;
+      color: var(--accent-yellow);
+    }
 
     /* Hero Section */
     .hero-section {
@@ -344,7 +363,8 @@
       N &amp; A
       <img src="images/top_decor.png" class="nav-decor-icon nav-decor-right" alt="Decor">
     </div>
-    <div class="nav-menu">☰</div>
+    <!-- Replaced Hamburger Menu with RSVP Button -->
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSde-ASkEMzDFm2Tdr278vKIjfYSTXoRcedX0SU2KZfsy1GrKw/viewform?usp=dialog" target="_blank" class="nav-rsvp-btn">RSVP</a>
   </nav>
 
   <!-- Hero / Welcome Section -->
@@ -483,27 +503,27 @@
       <div class="palette-bar-container">
         <div class="palette-col">
           <div class="palette-block" style="background-color: #E77581;"></div>
-          <div class="palette-text"><strong>Sweet Blush</strong></div>
+          <div class="palette-text"><strong>Blush</strong>#E77581</div>
         </div>
         <div class="palette-col">
           <div class="palette-block" style="background-color: #F7A868;"></div>
-          <div class="palette-text"><strong>Peachy Keen</strong></div>
+          <div class="palette-text"><strong>Peach</strong>#F7A868</div>
         </div>
         <div class="palette-col">
           <div class="palette-block" style="background-color: #FCEF94;"></div>
-          <div class="palette-text"><strong>Buttercup</strong></div>
+          <div class="palette-text"><strong>Yellow</strong>#FCEF94</div>
         </div>
         <div class="palette-col">
           <div class="palette-block" style="background-color: #91E4CF;"></div>
-          <div class="palette-text"><strong>Mint To Be</strong></div>
+          <div class="palette-text"><strong>Mint</strong>#91E4CF</div>
         </div>
         <div class="palette-col">
           <div class="palette-block" style="background-color: #78C3F7;"></div>
-          <div class="palette-text"><strong>Something Blue</strong></div>
+          <div class="palette-text"><strong>Sky</strong>#78C3F7</div>
         </div>
         <div class="palette-col">
           <div class="palette-block" style="background-color: #9884E0;"></div>
-          <div class="palette-text"><strong>Lilac Love</strong></div>
+          <div class="palette-text"><strong>Lavender</strong>#9884E0</div>
         </div>
       </div>
 
