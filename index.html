@@ -71,10 +71,10 @@
       display: inline-block;
       vertical-align: middle;
       position: relative;
-      top: -1px; /* Fine-tunes vertical alignment with text */
+      top: -1px;
     }
     .nav-decor-right {
-      transform: scaleX(-1); /* Flips the right image for perfect symmetry */
+      transform: scaleX(-1);
     }
     
     /* RSVP Button in Header */
@@ -174,9 +174,8 @@
     h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); line-height: 1.2; margin-bottom: 0.5rem; }
     .sub-tagline { font-size: clamp(0.75rem, 2vw, 0.9rem); text-transform: uppercase; letter-spacing: 0.25em; font-weight: 500; margin-bottom: 1.5rem; }
     .intro-text { font-size: clamp(0.95rem, 2vw, 1.1rem); margin-bottom: 1.25rem; max-width: 800px; margin-left: auto; margin-right: auto; }
-    .parents-text { font-size: clamp(0.8rem, 1.5vw, 1rem); line-height: 1.5; margin-bottom: 1.5rem; color: #F0E6E8; }
-
-    /* Fluid Card Layout */
+    
+    /* Card Layout & Decor Dividers */
     .card {
       background: var(--card-bg); 
       border-radius: 16px;
@@ -196,9 +195,23 @@
     }
     .arch-card h1, .arch-card h2, .arch-card h3 { color: #ffffff; }
     .arch-card .script-text { color: var(--accent-yellow); }
-    .arch-card .sub-tagline { color: var(--sand); }
-    .arch-card .intro-text { color: #F0E6E8; }
-    .ampersand { font-family: 'Great Vibes', cursive; font-size: clamp(2rem, 4vw, 3rem); color: var(--accent-yellow); margin: 0.5rem 0; }
+    .card-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .card-divider-icon {
+      height: clamp(16px, 2vw, 22px);
+      width: auto;
+      object-fit: contain;
+      opacity: 0.85;
+    }
+    .card-divider-icon.right {
+      transform: scaleX(-1);
+    }
+    .connector-word { font-family: 'Great Vibes', cursive; font-size: clamp(2rem, 4vw, 3rem); color: var(--accent-yellow); margin: 0.5rem 0; font-weight: 400; }
 
     /* Countdown Styling */
     .countdown-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5rem; color: var(--maroon); }
@@ -242,7 +255,7 @@
       width: 100%;
       max-width: 850px;
       margin: 3.5rem auto 1.5rem auto; 
-      gap: 4px; /* Creates the thin white separating lines */
+      gap: 4px;
     }
 
     .palette-col {
@@ -259,23 +272,16 @@
     }
     
     .palette-col:hover .palette-block {
-      transform: scaleY(1.1); /* Adds a subtle interactive pop when hovered */
+      transform: scaleY(1.1);
     }
 
     .palette-text {
       margin-top: 1rem;
-      font-size: clamp(0.55rem, 1.2vw, 0.75rem);
+      font-size: clamp(0.6rem, 1.3vw, 0.8rem);
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      line-height: 1.5;
-    }
-
-    .palette-text strong {
-      color: var(--text-main);
       font-weight: 600;
-      display: block;
-      margin-bottom: 2px;
     }
 
     /* Floral Divider Graphic with Overlap */
@@ -363,7 +369,6 @@
       N &amp; A
       <img src="images/top_decor.png" class="nav-decor-icon nav-decor-right" alt="Decor">
     </div>
-    <!-- Replaced Hamburger Menu with RSVP Button -->
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSde-ASkEMzDFm2Tdr278vKIjfYSTXoRcedX0SU2KZfsy1GrKw/viewform?usp=dialog" target="_blank" class="nav-rsvp-btn">RSVP</a>
   </nav>
 
@@ -409,33 +414,27 @@
 
     <!-- Formal Invitation Card -->
     <header class="card arch-card fade-in">
-      <p class="sub-tagline" style="margin-top: 1rem;">You Are Invited</p>
-      
-      <div class="parents-text">
-        Mr. Susheed &amp; Mrs. Julee Susheed<br>
-        'NIVEDYAM'<br>
-        Holy Mount Road, Mathukoth P.O., Varam
+      <div class="card-divider" style="margin-top: 0.5rem;">
+        <img src="images/top_decor.png" class="card-divider-icon" alt="Decor">
+        <span style="font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sand);">You Are Invited</span>
+        <img src="images/top_decor.png" class="card-divider-icon right" alt="Decor">
       </div>
 
-      <p class="intro-text">
-        We cordially invite you and your family to grace the auspicious occasion of our daughter's wedding with your presence and blessings.
+      <p class="intro-text" style="margin-top: 1.5rem; line-height: 1.8;">
+        Together with our families, we cordially invite you and your family to grace the auspicious occasion of our wedding with your presence and blessings.
       </p>
 
-      <h1 style="margin-top: 2rem;">Nivedya Susheed</h1>
-      <div class="parents-text" style="font-size: clamp(0.65rem, 1.2vw, 0.85rem);">
-        (GD/o. Late Shri. Amban Raghavan &amp; Smt Kamalakshi<br>
-        Late Shri Janardhanan K &amp; Smt. Valsala V K)
-      </div>
+      <h1 style="margin-top: 2.5rem;">Nivedya Susheed</h1>
 
-      <div class="ampersand">&amp;</div>
+      <div class="connector-word">With</div>
 
       <h1>Adithya Dinesh</h1>
-      <div class="parents-text" style="font-size: clamp(0.65rem, 1.2vw, 0.85rem);">
-        S/o. Mr Dinesh &amp; Mrs. Jyothi Dinesh<br>
-        Ragam, Kanayi, Ezhome P.O., Ezhome
-      </div>
 
-      <div class="script-text" style="margin-top: 2rem;">Nivu &amp; Aadi</div>
+      <div class="card-divider" style="margin-top: 2.5rem;">
+        <img src="images/top_decor.png" class="card-divider-icon" alt="Decor">
+        <span class="script-text" style="color: var(--accent-yellow); font-size: 2rem;">Nivu &amp; Aadi</span>
+        <img src="images/top_decor.png" class="card-divider-icon right" alt="Decor">
+      </div>
     </header>
 
     <!-- Countdown & Details Section -->
@@ -503,27 +502,27 @@
       <div class="palette-bar-container">
         <div class="palette-col">
           <div class="palette-block" style="background-color: #E77581;"></div>
-          <div class="palette-text"><strong>Blush</strong>#E77581</div>
+          <div class="palette-text">Blush</div>
         </div>
         <div class="palette-col">
           <div class="palette-block" style="background-color: #F7A868;"></div>
-          <div class="palette-text"><strong>Peach</strong>#F7A868</div>
+          <div class="palette-text">Peach</div>
         </div>
         <div class="palette-col">
           <div class="palette-block" style="background-color: #FCEF94;"></div>
-          <div class="palette-text"><strong>Yellow</strong>#FCEF94</div>
+          <div class="palette-text">Yellow</div>
         </div>
         <div class="palette-col">
           <div class="palette-block" style="background-color: #91E4CF;"></div>
-          <div class="palette-text"><strong>Mint</strong>#91E4CF</div>
+          <div class="palette-text">Mint</div>
         </div>
         <div class="palette-col">
           <div class="palette-block" style="background-color: #78C3F7;"></div>
-          <div class="palette-text"><strong>Sky</strong>#78C3F7</div>
+          <div class="palette-text">Sky</div>
         </div>
         <div class="palette-col">
           <div class="palette-block" style="background-color: #9884E0;"></div>
-          <div class="palette-text"><strong>Lavender</strong>#9884E0</div>
+          <div class="palette-text">Lavender</div>
         </div>
       </div>
 
