@@ -62,12 +62,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem; /* Space between the decor images and text */
+      gap: 0.6rem;
     }
     .nav-decor-icon {
-      height: clamp(14px, 2vw, 20px);
+      height: clamp(18px, 2.5vw, 24px);
       width: auto;
       object-fit: contain;
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      top: -1px; /* Fine-tunes vertical alignment with text */
     }
     .nav-decor-right {
       transform: scaleX(-1); /* Flips the right image for perfect symmetry */
@@ -79,7 +83,7 @@
       height: 100vh; width: 100vw;
       margin-top: 65px;
       position: relative;
-      background-image: url('images/header_1.jpeg'); 
+      background-image: url('images/header_2.jpeg'); 
       background-size: cover;
       background-position: center;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -210,9 +214,7 @@
     .timeline-item h3 { font-size: clamp(1.3rem, 2.5vw, 1.6rem); margin-bottom: 0.25rem; color: var(--maroon); }
     .timeline-date { font-size: clamp(0.7rem, 1.5vw, 0.85rem); text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 0.5rem; display: block; }
 
-    /* Dress Code / Palette Section */
-    .dress-code h2 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: 0.5rem; color: var(--maroon); }
-    
+    /* Dress Code / Bar Palette Section */
     .cheesy-quote {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.2rem, 2.5vw, 1.5rem);
@@ -223,48 +225,47 @@
       margin: 1.5rem 0;
     }
 
-    .palette-container { 
+    .palette-bar-container { 
       display: flex; 
       justify-content: center; 
-      gap: clamp(1.2rem, 3vw, 2rem); 
-      margin: 2.5rem 0; 
-      flex-wrap: wrap; 
+      width: 100%;
+      max-width: 850px;
+      margin: 3.5rem auto 1.5rem auto; 
+      gap: 4px; /* Creates the thin white separating lines */
     }
 
-    .color-card {
+    .palette-col {
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.6rem;
     }
 
-    .color-swatch {
-      width: clamp(55px, 9vw, 75px); 
-      height: clamp(55px, 9vw, 75px); 
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      border: 3px solid #ffffff; 
-      box-shadow: 0 8px 20px rgba(106, 24, 41, 0.12); 
-      cursor: pointer; 
-      transition: transform 0.4s ease, border-radius 0.4s ease;
+    .palette-block {
+      width: 100%;
+      height: clamp(50px, 8vw, 80px);
+      transition: transform 0.3s ease;
     }
-    .color-swatch:hover { 
-      transform: scale(1.12) translateY(-5px) rotate(5deg); 
-      border-radius: 40% 60% 70% 30% / 50% 60% 40% 50%;
+    
+    .palette-col:hover .palette-block {
+      transform: scaleY(1.1); /* Adds a subtle interactive pop when hovered */
     }
 
-    .color-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
+    .palette-text {
+      margin-top: 1rem;
+      font-size: clamp(0.55rem, 1.2vw, 0.75rem);
       color: var(--text-muted);
-      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      line-height: 1.5;
     }
 
-    .swatch-sage { background-color: #C8D6AF; }
-    .swatch-rose { background-color: #DDA7A5; }
-    .swatch-beige { background-color: #EADBC8; }
-    .swatch-lavender { background-color: #D3CCE3; }
-    .swatch-sky { background-color: #C1D3E0; }
+    .palette-text strong {
+      color: var(--text-main);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
 
     /* Floral Divider Graphic with Overlap */
     .floral-divider {
@@ -501,7 +502,7 @@
 
     <!-- Dress Code Section -->
     <section class="card dress-code fade-in">
-      <div class="script-text" style="margin-bottom: 0.5rem;">Dress Up &amp; Celebrate</div>
+      <div class="script-text" style="font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 0.5rem;">Dress Up &amp; Celebrate</div>
 
       <div class="cheesy-quote">
         "Pastel hues for our 'I do's. ✨"
@@ -511,31 +512,35 @@
         Come dressed in the pastel shades that you could come in... Choose the colour from the colour palette that best suits you.
       </p>
 
-      <!-- Organic Watercolor Paint Blob Palette -->
-      <div class="palette-container">
-        <div class="color-card">
-          <div class="color-swatch swatch-sage"></div>
-          <span class="color-label">Sage</span>
+      <!-- Segmented Bar Palette -->
+      <div class="palette-bar-container">
+        <div class="palette-col">
+          <div class="palette-block" style="background-color: #E77581;"></div>
+          <div class="palette-text"><strong>Blush</strong>#E77581</div>
         </div>
-        <div class="color-card">
-          <div class="color-swatch swatch-rose"></div>
-          <span class="color-label">Dusty Rose</span>
+        <div class="palette-col">
+          <div class="palette-block" style="background-color: #F7A868;"></div>
+          <div class="palette-text"><strong>Peach</strong>#F7A868</div>
         </div>
-        <div class="color-card">
-          <div class="color-swatch swatch-beige"></div>
-          <span class="color-label">Warm Beige</span>
+        <div class="palette-col">
+          <div class="palette-block" style="background-color: #FCEF94;"></div>
+          <div class="palette-text"><strong>Yellow</strong>#FCEF94</div>
         </div>
-        <div class="color-card">
-          <div class="color-swatch swatch-lavender"></div>
-          <span class="color-label">Lavender</span>
+        <div class="palette-col">
+          <div class="palette-block" style="background-color: #91E4CF;"></div>
+          <div class="palette-text"><strong>Mint</strong>#91E4CF</div>
         </div>
-        <div class="color-card">
-          <div class="color-swatch swatch-sky"></div>
-          <span class="color-label">Sky Blue</span>
+        <div class="palette-col">
+          <div class="palette-block" style="background-color: #78C3F7;"></div>
+          <div class="palette-text"><strong>Sky</strong>#78C3F7</div>
+        </div>
+        <div class="palette-col">
+          <div class="palette-block" style="background-color: #9884E0;"></div>
+          <div class="palette-text"><strong>Lavender</strong>#9884E0</div>
         </div>
       </div>
 
-      <p class="intro-text" style="color: var(--text-muted);">
+      <p class="intro-text" style="color: var(--text-muted); margin-top: 2rem;">
         Traditional elegance, happy hearts, and memories to cherish forever.
       </p>
     </section>
